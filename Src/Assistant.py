@@ -1,19 +1,19 @@
-import clipboard
+# import clipboard
 import datetime
-import os
-import psutil
-import pyautogui
-import pyjokes
+# import os
+# import psutil
+# import pyautogui
+# import pyjokes
 import pyttsx3
-import pywhatkit
+# import pywhatkit
 import requests
-import smtplib
+# import smtplib
 import speech_recognition as sr
-import time as ti
-import webbrowser as we
-from email.message import EmailMessage
-from newsapi import NewsApiClient
-from setup.py import *
+# import time as ti
+# import webbrowser as we
+# from email.message import EmailMessage
+# from newsapi import NewsApiClient
+from setup import *
 
 from time import sleep
 
@@ -54,7 +54,7 @@ def inputCommand():
     # query = input() # For getting input from CLI
     r = sr.Recognizer()
     query = ""
-    with sr.Microphone(device_index=1) as source:
+    with sr.Microphone(device_index=0) as source:
         print("Listening...")
         r.pause_threshold = 1
         try:
