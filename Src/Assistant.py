@@ -1,9 +1,11 @@
 # import clipboard
 import datetime
-# import os
+import os
+import pyglet
 # import psutil
-import pyautogui
+# import pyautogui
 # import pyjokes
+# import playsound
 import pyttsx3
 import pywhatkit
 import requests
@@ -19,6 +21,8 @@ from time import sleep
 
 user = "Andy"
 assistant= "Gigabit" # Iron man Fan
+
+contacts = ['+40755655535','+40743868785']
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
@@ -76,12 +80,19 @@ def news():
 
 def sendWhatMsg():
     user_name = {
-        'Jarvis': '+40786575037'
+        'Andy': '+40786575037'
     }
-    h = datetime.datetime.now().strftime('%H')
-    m = datetime.datetime.now().strftime('%M')
+    
     try:
-        pywhatkit.sendwhatmsg('+40743868785', 'Me sugi.',int(h),int(m)+1)
+        message=inputCommand()
+        h = datetime.datetime.now().strftime('%H')
+        m = datetime.datetime.now().strftime('%M')
+        
+        if(int(m)+1>59):
+            m=0
+        else:
+            m=int(m)+1
+        pywhatkit.sendwhatmsg('+40743868785', message,int(h),m,15,True, 5)
     except Exception as e:
         print(e)
         output("Unable to send the Message")
@@ -115,3 +126,10 @@ while True:
 
     elif('whatsapp' in query):
         sendWhatMsg()
+
+    elif('what can you do' in query):
+        output('I can suck your dick my guy')
+    
+    elif('call the russian president' in query):
+        music = pyglet.resource.media('sound.mp3')
+        music.play()
