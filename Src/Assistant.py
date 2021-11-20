@@ -2,17 +2,17 @@
 import datetime
 # import os
 # import psutil
-# import pyautogui
+import pyautogui
 # import pyjokes
 import pyttsx3
-# import pywhatkit
+import pywhatkit
 import requests
 # import smtplib
 import speech_recognition as sr
 # import time as ti
-# import webbrowser as we
+import webbrowser as we
 # from email.message import EmailMessage
-# from newsapi import NewsApiClient
+from newsapi import NewsApiClient
 from setup import *
 
 from time import sleep
@@ -32,6 +32,7 @@ def output(audio):
     engine.runAndWait()
 
 def greet():
+    # print(datetime.datetime.now().strftime("%I:%M"))
     hour = datetime.datetime.now().hour
     if (hour >= 6) and (hour < 12):
         output(f"Good Morning {user}, {assistant} here to help")
@@ -63,6 +64,28 @@ def inputCommand():
             output("Say that again Please...")
     return query
 
+def news():
+    newsapi = NewsApiClient(api_key='05fbef0165ce4124aac6080dd1e3ee27')
+    output("What topic you need the news about")
+    topic = inputCommand()
+    data = newsapi.get_top_headlines(
+        q=topic, language="en", page_size=5)
+    newsData = data["articles"]
+    for y in newsData:
+        output(y["description"])
+
+def sendWhatMsg():
+    user_name = {
+        'Jarvis': '+40786575037'
+    }
+    h = datetime.datetime.now().strftime('%H')
+    m = datetime.datetime.now().strftime('%M')
+    try:
+        pywhatkit.sendwhatmsg('+40743868785', 'Me sugi.',int(h),int(m)+1)
+    except Exception as e:
+        print(e)
+        output("Unable to send the Message")
+
 greet()
 
 while True:
@@ -72,20 +95,23 @@ while True:
     if ('weather' in query):
         weather()
 
-    elif('Hello' in query):
+    elif('hello' in query):
         greet()
     
+    elif('news' in query):
+        news()
+
     if ("time" in query):
         output("Current time is " +
                datetime.datetime.now().strftime("%I:%M"))
-        print("Current time is " +
-                datetime.datetime.now().strftime("%I:%M"))
 
     elif ('date' in query):
         output("Current date is " + str(datetime.datetime.now().day)
                + " " + str(datetime.datetime.now().month)
                + " " + str(datetime.datetime.now().year))
 
-        print("Current date is " + str(datetime.datetime.now().day)
-               + "." + str(datetime.datetime.now().month)
-               + "." + str(datetime.datetime.now().year))
+    elif('fuck you'in query):
+        output("Fuck your mama")
+
+    elif('whatsapp' in query):
+        sendWhatMsg()
