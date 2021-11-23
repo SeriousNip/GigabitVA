@@ -121,14 +121,8 @@ while True:
                + " " + str(datetime.datetime.now().month)
                + " " + str(datetime.datetime.now().year))
 
-    elif('fuck you'in query):
-        output("Fuck your mama")
-
     elif('whatsapp' in query):
         sendWhatMsg()
-
-    elif('what can you do' in query):
-        output('I can suck your dick my guy')
     
     elif('call the russian president' in query):
         music = pyglet.resource.media('sound.mp3')
