@@ -17,7 +17,6 @@ import webbrowser as we
 # from email.message import EmailMessage
 from newsapi import NewsApiClient
 
-user='Andy'
 assistant= "Natasha"
 
 # def setUser(username):
@@ -36,21 +35,20 @@ def output(audio):
     engine.say(audio)
     engine.runAndWait()
 
-def greet():
+def greet(username):
     # print(datetime.datetime.now().strftime("%I:%M"))
     hour = datetime.datetime.now().hour
     if (hour >= 6) and (hour < 12):
-        output(f"Good Morning {user}, {assistant} here to help")
+        output(f"Good Morning {username}, {assistant} here to help")
     elif (hour >= 12) and (hour < 18):
-        output(f"Good afternoon {user}, {assistant} here to help")
+        output(f"Good afternoon {username}, {assistant} here to help")
     elif (hour >= 18) and (hour < 21):
-        output(f"Good Evening {user}, {assistant} here to help")
+        output(f"Good Evening {username}, {assistant} here to help")
 
-def weather():
-    output(f"In Cluj Napoca")
-    city = "Cluj-Napoca"
+def weather(location):
+    output(f"In {location}")
     res = requests.get(
-        f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid=16f0afad2fd9e18b7aee9582e8ce650b&units=metric").json()
+        f"http://api.openweathermap.org/data/2.5/weather?q={location}&appid=16f0afad2fd9e18b7aee9582e8ce650b&units=metric").json()
     temp1 = res["weather"][0]["description"]
     temp2 = res["main"]["temp"]
     output(
@@ -100,18 +98,17 @@ def sendWhatMsg():
 
 
 
-def awaken():
+def awaken(location):
     
     timeout = 10
     start_time=time.time()
-    greet() 
     while True:
         
             
         query = inputCommand().lower()
 
         if ('weather' in query):
-            weather()
+            weather(location)
             break
 
         elif('hello' in query):

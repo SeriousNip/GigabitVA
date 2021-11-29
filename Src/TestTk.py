@@ -3,7 +3,7 @@ from tkinter import messagebox
 from tkinter import ttk
 import webbrowser
 import os
-from Assistant import greet, awaken, user
+from Assistant import greet, awaken
 
 
 
@@ -33,6 +33,8 @@ datasheet = 'https://www.youtube.com/watch?v=eBGIQ7ZuuiU&ab_channel=YouGotRickRo
 global Login_Check
 Login_Check=0
 
+location=''
+
 global Config_Check
 Config_Check=0
 #Buttons used in order to move around
@@ -48,7 +50,7 @@ def Close():
 
 def Listen_WA():
     if Login_Check==1:
-        awaken()
+        awaken(location)
         
         
     else:
@@ -136,10 +138,10 @@ def Login_C():
                         messagebox.showinfo("Congrats!","Welcome "+ user_login + "!")
                         Menu_Natasha.select(0)
                         Login_Check=1
-                        user=user_login
                         User_TextBox_Login.delete(0, END)
                         Password_TextBox_Login.delete(0, END)
-                        greet()
+                        
+                        greet(user_login)
                     else:
                         messagebox.showerror("Error","Wrong Password!")
                         Password_TextBox_Login.delete(0, END)
