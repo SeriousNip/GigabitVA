@@ -15,6 +15,9 @@ def setup():
     if cfg["city"]=="":
         city = input("Please enter the city you live in:\n")
         cfg["city"]=city
+    if cfg["pwd"]=="":
+        pwd = input("Please enter your password:\n")
+        cfg["pwd"]=pwd
     if cfg["email"]=="":
         email = input("Please enter your e-mail adress:\n")
         cfg["email"]=email

@@ -1,6 +1,6 @@
 # import clipboard
 import datetime
-import os
+# import os
 import pyglet
 # import psutil
 # import pyautogui
@@ -16,11 +16,11 @@ import webbrowser as we
 # from email.message import EmailMessage
 from newsapi import NewsApiClient
 from setup import *
-
+from setup import setup
 from time import sleep
 
 user = "Andy"
-assistant= "Gigabit" # Iron man Fan
+assistant= "Natasha"
 
 contacts = ['+40755655535','+40743868785']
 
@@ -100,6 +100,8 @@ def sendWhatMsg():
 greet()
 
 while True:
+
+    setup()
 
     query = inputCommand().lower()
 
