@@ -102,7 +102,7 @@ def sendWhatMsg():
 
 def awaken():
     
-    timeout = 25
+    timeout = 10
     start_time=time.time()
     greet() 
     while True:
