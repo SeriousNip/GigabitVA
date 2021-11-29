@@ -146,6 +146,3 @@ def awaken():
             output("I'm going to sleep now.")
             break
         
-
-
-awaken()
