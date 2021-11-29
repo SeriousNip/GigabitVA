@@ -3,6 +3,7 @@ from tkinter import messagebox
 from tkinter import ttk
 import webbrowser
 import os
+from Assistant import greet, awaken, user
 
 
 
@@ -15,6 +16,7 @@ Assistant_Width = Assistant.winfo_screenwidth() # width of the screen
 Assistant_Height = Assistant.winfo_screenheight() # height of the screen
 Assistant.resizable(False,False)
 
+
 Assistant.config(background='#85a9d6')
 
 Assistant.config
@@ -23,8 +25,8 @@ y = (Assistant_Height /2) - (height /2)
 
 Assistant.geometry('%dx%d+%d+%d' % (width, height, x,y))
 
-Exit_Button_Imng = PhotoImage(file="Exit.png")
-Listen_Button_Imng = PhotoImage(file="Listen.png")
+Exit_Button_Imng = PhotoImage(file="Src\Exit.png")
+Listen_Button_Imng = PhotoImage(file="Src\Listen.png")
 
 datasheet = 'https://www.youtube.com/watch?v=eBGIQ7ZuuiU&ab_channel=YouGotRickRolled'
 
@@ -38,9 +40,7 @@ Config_Check=0
 def Config():
     
     Menu_Natasha.select(1)
- 
-        
-   
+    
 
 def Close():
     
@@ -48,7 +48,9 @@ def Close():
 
 def Listen_WA():
     if Login_Check==1:
-        print("Trigger the listening program")
+        awaken()
+        
+        
     else:
         messagebox.showerror("Error","Login/Setup in order to use the program!")
 
@@ -134,8 +136,10 @@ def Login_C():
                         messagebox.showinfo("Congrats!","Welcome "+ user_login + "!")
                         Menu_Natasha.select(0)
                         Login_Check=1
+                        user=user_login
                         User_TextBox_Login.delete(0, END)
                         Password_TextBox_Login.delete(0, END)
+                        greet()
                     else:
                         messagebox.showerror("Error","Wrong Password!")
                         Password_TextBox_Login.delete(0, END)

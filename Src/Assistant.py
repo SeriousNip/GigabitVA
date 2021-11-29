@@ -1,5 +1,6 @@
 # import clipboard
 import datetime
+import time
 # import os
 import pyglet
 # import psutil
@@ -15,12 +16,12 @@ import speech_recognition as sr
 import webbrowser as we
 # from email.message import EmailMessage
 from newsapi import NewsApiClient
-from setup import *
-from setup import setup
-from time import sleep
 
-user = "Andy"
+user='Andy'
 assistant= "Natasha"
+
+# def setUser(username):
+#     user=username
 
 contacts = ['+40755655535','+40743868785']
 
@@ -97,35 +98,54 @@ def sendWhatMsg():
         print(e)
         output("Unable to send the Message")
 
-greet()
 
-while True:
 
-    setup()
-
-    query = inputCommand().lower()
-
-    if ('weather' in query):
-        weather()
-
-    elif('hello' in query):
-        greet()
+def awaken():
     
-    elif('news' in query):
-        news()
+    timeout = 25
+    start_time=time.time()
+    greet() 
+    while True:
+        
+            
+        query = inputCommand().lower()
 
-    if ("time" in query):
-        output("Current time is " +
-               datetime.datetime.now().strftime("%I:%M"))
+        if ('weather' in query):
+            weather()
+            break
 
-    elif ('date' in query):
-        output("Current date is " + str(datetime.datetime.now().day)
-               + " " + str(datetime.datetime.now().month)
-               + " " + str(datetime.datetime.now().year))
+        elif('hello' in query):
+            greet()
+            break
+        
+        elif('news' in query):
+            news()
+            break
 
-    elif('whatsapp' in query):
-        sendWhatMsg()
-    
-    elif('call the russian president' in query):
-        music = pyglet.resource.media('sound.mp3')
-        music.play()
+        if ("time" in query):
+            output("Current time is " +
+                   datetime.datetime.now().strftime("%I:%M"))
+            break
+
+        elif ('date' in query):
+            output("Current date is " + str(datetime.datetime.now().day)
+                   + " " + str(datetime.datetime.now().month)
+                   + " " + str(datetime.datetime.now().year))
+            break
+
+        elif('whatsapp' in query):
+            sendWhatMsg()
+            break
+
+        elif('call the russian president' in query):
+            music = pyglet.resource.media('sound.mp3')
+            music.play()
+            break
+
+        elif(time.time()>start_time+timeout):
+            output("I'm going to sleep now.")
+            break
+        
+
+
+awaken()
