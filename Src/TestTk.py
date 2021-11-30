@@ -33,6 +33,7 @@ datasheet = 'https://www.youtube.com/watch?v=eBGIQ7ZuuiU&ab_channel=YouGotRickRo
 global Login_Check
 Login_Check=0
 
+global location
 location=''
 
 global Config_Check
@@ -51,13 +52,14 @@ def Close():
 def Listen_WA():
     if Login_Check==1:
         awaken(location)
-        
-        
+    
     else:
         messagebox.showerror("Error","Login/Setup in order to use the program!")
-
+        
 def How_To_Use():
     webbrowser.open_new(datasheet)
+
+
 
 def GoBack():
     Menu_Natasha.select(0)
@@ -116,9 +118,11 @@ def VA_Data():
             Phone_TextBox.delete(0, END)
             messagebox.showerror("Congrats!","User Added!")
             Menu_Natasha.select(0)
+
        
 def Login_C():
             global Login_Check
+            global location
             if Login_Username.get()=="" or Login_Password.get()=="":
                 messagebox.showerror("Error","All fields are required in order to login!")
             else:

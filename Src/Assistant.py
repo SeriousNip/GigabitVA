@@ -18,7 +18,7 @@ import webbrowser as we
 from newsapi import NewsApiClient
 
 assistant= "Natasha"
-location='Cluj'
+location=''
 # def setUser(username):
 #     user=username
 
@@ -47,12 +47,10 @@ def greet(username):
 
 def weather(location):
     output(f"In {location}")
-    res = requests.get(
-        f"http://api.openweathermap.org/data/2.5/weather?q={location}&appid=16f0afad2fd9e18b7aee9582e8ce650b&units=metric").json()
+    res = requests.get(f"http://api.openweathermap.org/data/2.5/weather?q={location}&appid=16f0afad2fd9e18b7aee9582e8ce650b&units=metric").json()
     temp1 = res["weather"][0]["description"]
     temp2 = res["main"]["temp"]
-    output(
-        f"Temperature is {format(temp2)} degree Celsius \nWeather is {format(temp1)}")
+    output(f"Temperature is {format(temp2)} degree Celsius \nWeather is {format(temp1)}")
 
 def inputCommand():
     # query = input() # For getting input from CLI
@@ -109,37 +107,43 @@ def awaken(location):
 
         if ('weather' in query):
             weather(location)
-            break
+            start_time=time.time()
+            
 
         elif('hello' in query):
             greet()
-            break
+            start_time=time.time()
+            
         
         elif('news' in query):
             news()
-            break
+            start_time=time.time()
+            
 
         if ("time" in query):
             output("Current time is " +
                    datetime.datetime.now().strftime("%I:%M"))
-            break
+            start_time=time.time()
+            
 
         elif ('date' in query):
             output("Current date is " + str(datetime.datetime.now().day)
                    + " " + str(datetime.datetime.now().month)
                    + " " + str(datetime.datetime.now().year))
-            break
+            start_time=time.time()
+            
 
         elif('whatsapp' in query):
             sendWhatMsg()
-            break
+            start_time=time.time()
+            
 
         elif('call the russian president' in query):
             music = pyglet.resource.media('sound.mp3')
             music.play()
-            break
+            start_time=time.time()
+            
 
         elif(time.time()>start_time+timeout):
             output("I'm going to sleep now.")
             break
-        
