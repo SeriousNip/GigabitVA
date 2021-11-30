@@ -125,8 +125,8 @@ def Login_C():
 
                 user_login=Login_Username.get()
                 password_login=Login_Password.get()
-                print(user_login)   
-                print(password_login)
+                # print(user_login)   
+                # print(password_login)
                 
                 
                 Lists_of_Users = os.listdir()
@@ -134,7 +134,7 @@ def Login_C():
                     Current_file=open(user_login,"r")
                     Check=Current_file.read().splitlines()
                     location=Check[2]
-                    print(Check)
+                    # print(Check)
                     if password_login in Check:
                         messagebox.showinfo("Congrats!","Welcome "+ user_login + "!")
                         Menu_Natasha.select(0)
