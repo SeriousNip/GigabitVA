@@ -133,6 +133,7 @@ def Login_C():
                 if user_login in Lists_of_Users:
                     Current_file=open(user_login,"r")
                     Check=Current_file.read().splitlines()
+                    location=Check[2]
                     print(Check)
                     if password_login in Check:
                         messagebox.showinfo("Congrats!","Welcome "+ user_login + "!")

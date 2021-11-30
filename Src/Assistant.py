@@ -18,7 +18,7 @@ import webbrowser as we
 from newsapi import NewsApiClient
 
 assistant= "Natasha"
-
+location='Cluj'
 # def setUser(username):
 #     user=username
 
