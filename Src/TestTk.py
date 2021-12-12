@@ -28,7 +28,7 @@ Assistant.geometry('%dx%d+%d+%d' % (width, height, x,y))
 Exit_Button_Imng = PhotoImage(file="Src\Exit.png")
 Listen_Button_Imng = PhotoImage(file="Src\Listen.png")
 
-datasheet = 'https://www.youtube.com/watch?v=eBGIQ7ZuuiU&ab_channel=YouGotRickRolled'
+datasheet = 'file:///D:/Faculta/GigabitVA/Git/UserManual.pdf'
 
 global Login_Check
 Login_Check=0

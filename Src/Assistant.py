@@ -1,3 +1,4 @@
+import webbrowser
 # import clipboard
 import datetime
 import time
@@ -60,7 +61,7 @@ def inputCommand():
         print("Listening...")
         r.pause_threshold = 1 # sets the threshold for pause between words
         try:
-            query = r.recognize_google(r.listen(source), language="en_US") # call for Speech Recognition using the Google Speech Recognition API
+            query = r.recognize_google(r.listen(source), language="en_GB") # call for Speech Recognition using the Google Speech Recognition API
         except Exception as e:
             output("Say that again Please...") # in case of an error in the Speech Recognition it will output an error
     return query
@@ -137,8 +138,14 @@ def awaken(location):
             music = pyglet.resource.media('sound.mp3')
             music.play()
             start_time=time.time()
-            
+
+        elif('yes' in query):
+            webbrowser.open_new_tab("https://www.youtube.com/watch?v=2VZBeeFYktQ&ab_channel=Razorshady1711")
+            start_time=time.time()
+             
 
         elif(time.time()>start_time+timeout): # Checking the timeout condition
             output("I'm going to sleep now.") # Outputing a warning that the timeout condition is being achieved
             break                             # Breaking the loop for user privacy
+
+# awaken("Cluj")
