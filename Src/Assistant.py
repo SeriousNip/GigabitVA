@@ -142,6 +142,19 @@ def awaken(location):
         elif('yes' in query):
             webbrowser.open_new_tab("https://www.youtube.com/watch?v=2VZBeeFYktQ&ab_channel=Razorshady1711")
             start_time=time.time()
+            
+        elif('soviet' in query):
+            output("Here is some music for your soul ")
+            webbrowser.open_new_tab("https://www.youtube.com/watch?v=U06jlgpMtQs&ab_channel=rascrifice")   
+            start_time=time.time()
+        
+        elif('youtube' in query):
+            webbrowser.open_new_tab("https://www.youtube.com/https://www.youtube.com/")   
+            start_time=time.time()
+
+        elif('facebook' in query):
+            webbrowser.open_new_tab("https://www.facebook.com/")   
+            start_time=time.time()
              
 
         elif(time.time()>start_time+timeout): # Checking the timeout condition
